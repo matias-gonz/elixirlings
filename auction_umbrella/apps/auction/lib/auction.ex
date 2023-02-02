@@ -3,7 +3,7 @@ defmodule Auction do
 
   @repo FakeRepo
 
-  def list_item do
+  def list_items do
     @repo.all(Item)
   end
 
