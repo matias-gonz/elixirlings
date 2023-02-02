@@ -1,7 +1,7 @@
 defmodule Auction do
-  alias Auction.{Item, FakeRepo}
+  alias Auction.{Item, Repo}
 
-  @repo FakeRepo
+  @repo Repo
 
   def list_items do
     @repo.all(Item)
