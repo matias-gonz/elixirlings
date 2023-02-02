@@ -14,4 +14,13 @@ defmodule Auction do
   def get_item_by(attrs) do
     @repo.get_by(Item, attrs)
   end
+
+  def insert_item(item) do
+    Item
+    |> struct(item)
+    |> @repo.insert()
+  end
+
+  def delete_item(%Item{} = item), do: @repo.delete(item)
+
 end
