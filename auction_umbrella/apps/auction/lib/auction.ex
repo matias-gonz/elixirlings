@@ -16,8 +16,8 @@ defmodule Auction do
   end
 
   def insert_item(item) do
-    Item
-    |> struct(item)
+    %Item{}
+    |> Item.changeset(item)
     |> @repo.insert()
   end
 
