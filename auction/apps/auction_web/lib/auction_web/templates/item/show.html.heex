@@ -2,9 +2,11 @@
 
 <ul>
   <li>
-    <strong>Description:</strong> <%= @item.description %>.
+    <strong>Description:</strong> <%= @item.description %>
   </li>
   <li>
-    <strong>Ends at:</strong> <%= @item.ends_at %>.
+    <strong>Ends at:</strong> <%= @item.ends_at %>
   </li>
 </ul>
+
+<%= button("Edit", to: "/items/#{@item.id}/edit", method: :get, class: "btn") %>

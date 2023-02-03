@@ -12,6 +12,9 @@
   <body>
     <header>
       <section class="container">
+        <nav>
+          <%= button("Post auction", to: "/items/new", method: :get, class: "btn") %>
+        </nav>
         <h1> <%= link("Auctions!", to: Routes.item_path(@conn, :index)) %> </h1>
       </section>
     </header>
