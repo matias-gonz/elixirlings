@@ -12,7 +12,7 @@
   <body>
     <header>
       <section class="container">
-        <h1>Auctions!</h1>
+        <h1> <%= link("Auctions!", to: Routes.item_path(@conn, :index)) %> </h1>
       </section>
     </header>
     <%= @inner_content %>
