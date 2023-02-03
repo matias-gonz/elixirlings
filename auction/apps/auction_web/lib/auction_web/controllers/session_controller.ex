@@ -10,7 +10,7 @@ defmodule AuctionWeb.SessionController do
       %Auction.User{} = user ->
         conn
         |> put_session(:user_id, user.id)
-        |> put_flash(:info, "Welcome back #{username}!")
+        |> put_flash(:info, "Welcome #{username}!")
         |> redirect(to: Routes.item_path(conn, :index))
       _ ->
         conn

@@ -14,7 +14,10 @@ defmodule AuctionWeb.UserController do
 
   def create(conn, %{"user" => user_params}) do
     case Auction.insert_user(user_params) do
-      {:ok, user} -> redirect(conn, to: Routes.user_path(conn, :show, user))
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "Registration successful!")
+        |> redirect(to: Routes.session_path(conn, :new))
       {:error, user} -> render(conn, "new.html", user: user)
     end
   end

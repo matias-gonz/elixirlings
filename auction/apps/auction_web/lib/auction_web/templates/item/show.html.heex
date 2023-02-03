@@ -1,5 +1,12 @@
-<h1> <%= @item.title %> </h1>
+<div style="width: 50%; float:left">
+   <h1> <%= @item.title %> </h1>
+</div>
 
+<div style="width: 13%; float:right">
+  <%= button("Edit", to: "/items/#{@item.id}/edit", method: :get, class: "btn") %>
+</div>
+
+<br style="clear:both;"/>
 <ul>
   <li>
     <strong>Description:</strong> <%= @item.description %>
@@ -9,4 +16,15 @@
   </li>
 </ul>
 
-<%= button("Edit", to: "/items/#{@item.id}/edit", method: :get, class: "btn") %>
+<%= if @current_user do %>
+  <h3> Place your bid: </h3>
+  <%= form_for @bid, Routes.item_bid_path(@conn, :create, @item), fn f -> %>
+    <%= label f, :amount, "Amount", class: "control-label" %>
+    <%= error_tag f, :amount %>
+    <%= number_input f, :amount, class: "form-control" %>
+
+    <div>
+      <%= submit "Bid"%>
+    </div>
+  <% end %>
+<% end %>
