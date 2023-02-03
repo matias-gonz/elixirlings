@@ -16,15 +16,28 @@
   </li>
 </ul>
 
-<%= if @current_user do %>
-  <h3> Place your bid: </h3>
-  <%= form_for @bid, Routes.item_bid_path(@conn, :create, @item), fn f -> %>
-    <%= label f, :amount, "Amount", class: "control-label" %>
-    <%= error_tag f, :amount %>
-    <%= number_input f, :amount, class: "form-control" %>
+<div style="display: flex; flex-direction: row;">
+  <div style="flex: 1;">
+    <h3> Current bids: </h3>
+    <ul>
+    <%= for bid <- @item.bids do %>
+      <li> <strong><%= bid.amount %> </strong> from <em><%= bid.user.username %></em> </li>
+    <% end %>
+    </ul>
+  </div>
 
-    <div>
-      <%= submit "Bid"%>
-    </div>
+  <div style="flex: 1;">
+  <%= if @current_user do %>
+    <h3> Place your bid: </h3>
+    <%= form_for @bid, Routes.item_bid_path(@conn, :create, @item), fn f -> %>
+      <%= label f, :amount, "Amount", class: "control-label" %>
+      <%= error_tag f, :amount %>
+      <%= number_input f, :amount, class: "form-control" %>
+
+      <div>
+        <%= submit "Bid"%>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+  </div>
+</div>
