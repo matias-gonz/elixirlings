@@ -13,3 +13,6 @@
     </div>
 
 <% end %>
+
+<h2> Not registered? </h2>
+<%= button("Register", to: "/users/new", method: :get, class: "btn") %>
