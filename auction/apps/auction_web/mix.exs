@@ -52,7 +52,8 @@ defmodule AuctionWeb.MixProject do
       {:auction, in_umbrella: true},
       {:ecto_sql, ">= 0.0.0"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_ecto, ">= 0.0.0"}
+      {:phoenix_ecto, ">= 0.0.0"},
+      {:timex, "> 0.0.0"}
     ]
   end
 

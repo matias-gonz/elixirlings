@@ -1,8 +1,18 @@
-<h1> Hello <%= @user.username %>! </h1>
+<h1>User details:</h1>
 
 <dl>
+  <dt><strong>Username</strong></dt>
+    <dd><%= @user.username %></dd>
   <dt><strong>Email</strong></dt>
     <dd><%= @user.email %></dd>
   <dt><strong>Registration date</strong></dt>
-    <dd><%= @user.inserted_at %></dd>
+    <dd><%= formatted_datetime(@user.inserted_at) %></dd>
 </dl>
+
+<h2>Recent bids:</h2>
+<%= for b <- @bids do %>
+  <p>
+    [<%=formatted_datetime(b.inserted_at)%>] -- <%=integer_to_currency(b.amount) %> for
+    <em><%= link b.item.title, to: Routes.item_path(@conn, :show, b.item)%></em>
+  </p>
+<% end %>
