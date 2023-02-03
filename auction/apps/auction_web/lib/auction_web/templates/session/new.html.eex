@@ -14,5 +14,4 @@
 
 <% end %>
 
-<h2> Not registered? </h2>
-<%= button("Register", to: "/users/new", method: :get, class: "btn") %>
+<%= button("Not registered?", to: "/users/new", method: :get, class: "btn") %>
