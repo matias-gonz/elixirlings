@@ -13,8 +13,13 @@
     <header>
       <section class="container">
         <nav>
-          <%= button("Post auction", to: "/items/new", method: :get, class: "btn") %>
-          <%= button("Login", to: "/login", method: :get, class: "btn") %>
+          <%= if @current_user do %>
+            <%= button("Post auction", to: "/items/new", method: :get, class: "btn") %>
+            <%= button("My profile", to: "/users/#{@current_user.id}", method: :get, class: "btn") %>
+            <%= button("Logout", to: "/logout", method: :delete, class: "btn") %>
+          <%= else %>
+            <%= button("Login", to: "/login", method: :get, class: "btn") %>
+          <% end %>
         </nav>
         <h1> <%= link("Auctions!", to: Routes.item_path(@conn, :index)) %> </h1>
       </section>
