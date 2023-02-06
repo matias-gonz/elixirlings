@@ -29,11 +29,6 @@ defmodule AuctionWeb.Router do
     delete "/logout", SessionController, :delete
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", AuctionWeb do
-  #   pipe_through :api
-  # end
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -49,6 +44,12 @@ defmodule AuctionWeb.Router do
 
       live_dashboard "/dashboard", metrics: AuctionWeb.Telemetry
     end
+  end
+
+  scope "/api", AuctionWeb do
+    pipe_through :api
+
+    resources "/items", Api.ItemController, only: [:index, :show]
   end
 
   # Enables the Swoosh mailbox preview in development.
